@@ -34,19 +34,22 @@ const LIBROS = [
     title:"De Aplastado a Indispensable",
     sub:"El liderazgo operativo que transforma equipos y resultados",
     bg:"#F5F0E0", accent:GOLD,
-    img:"./LIBRO1DEAPLASTADOAINDISPENSABLE.jpeg"
+    img:"./LIBRO1DEAPLASTADOAINDISPENSABLE.jpeg",
+    url:"https://a.co/d/03F6mFfZ"
   },
   {
     title:"Lidera desde Quien Eres",
     sub:"De gerente a líder que transforma personas",
     bg:DARK, accent:GOLD,
-    img:"./LIBRO2LIDERADESDEQUIENERES.jpeg"
+    img:"./LIBRO2LIDERADESDEQUIENERES.jpeg",
+    url:"https://a.co/d/08QyzVQJ"
   },
   {
     title:"Lo Que Nadie Te Enseña Sobre Tu Jefe",
     sub:"Manejar hacia arriba",
     bg:"#2A1A1A", accent:"#CC3333",
-    img:"./LIBRO3LOQUENADIETEENSEÑADETUJEFE.jpeg"
+    img:"./LIBRO3LOQUENADIETEENSEÑADETUJEFE.jpeg",
+    url:"https://a.co/d/06xrjTDI"
   },
 ];
 
@@ -349,9 +352,10 @@ export default function App() {
                   <div style={{fontSize:11,color:b.accent,letterSpacing:2,fontFamily:"monospace",marginBottom:8}}>LIBRO {i+1}</div>
                   <h3 style={{fontSize:14,color:i===0?DARK:WHITE,lineHeight:1.4,margin:"0 0 8px",fontWeight:"bold"}}>{b.title}</h3>
                   <p style={{fontSize:12,color:i===0?MGRAY:"rgba(255,255,255,0.6)",margin:"0 0 16px",lineHeight:1.5}}>{b.sub}</p>
-                  <button style={{background:"transparent",border:`1px solid ${b.accent}`,color:b.accent,padding:"8px 16px",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:"Georgia",letterSpacing:1}}>
+                  <a href={b.url} target="_blank" rel="noopener noreferrer"
+                    style={{display:"inline-block",background:"transparent",border:`1px solid ${b.accent}`,color:b.accent,padding:"8px 16px",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:"Georgia",letterSpacing:1,textDecoration:"none"}}>
                     COMPRAR →
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
