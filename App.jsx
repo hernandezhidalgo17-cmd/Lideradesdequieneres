@@ -449,14 +449,16 @@ export default function App() {
           {/* COMUNIDAD */}
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>COMUNIDAD</div>
-            {[["▶️","YouTube","Videos para liderar mejor cada día."],["🎵","TikTok","Ideas rápidas que generan impacto."],["💼","LinkedIn","Artículos, reflexiones y herramientas."],["🎙","Spotify","Podcast con historias reales."]].map(([e,n,d],i) => (
-              <div key={i} style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer"}}>
+            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","#"],["🎙","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
+              <a key={i} href={url} target="_blank" rel="noopener noreferrer" style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer",textDecoration:"none"}}
+                onMouseEnter={ev => ev.currentTarget.style.opacity="0.7"}
+                onMouseLeave={ev => ev.currentTarget.style.opacity="1"}>
                 <span style={{fontSize:20,flexShrink:0}}>{e}</span>
                 <div>
                   <div style={{fontSize:13,fontWeight:"bold",color:DARK}}>{n}</div>
                   <div style={{fontSize:12,color:MGRAY}}>{d}</div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
 
