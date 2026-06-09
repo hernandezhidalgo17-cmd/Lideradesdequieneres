@@ -167,7 +167,7 @@ export default function App() {
         {/* FOTO HERO */}
         <div style={{position:"relative",background:`linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)`,display:"flex",alignItems:"flex-end",justifyContent:"center",overflow:"hidden"}}>
           <img
-            src="/IMAGENHEROPORTADADELSITIO.jpeg"
+            src="./IMAGENHEROPORTADADELSITIO.jpeg"
             alt="Juan Carlos Hernández"
             style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",opacity:0.85}}
           />
@@ -189,7 +189,7 @@ export default function App() {
         <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
           <div style={{position:"relative"}}>
             <img
-              src="/SOBREMI.jpeg"
+              src="./SOBREMI.jpeg"
               alt="Juan Carlos Hernández"
               style={{width:"100%",borderRadius:12,objectFit:"cover",height:520,display:"block"}}
             />
@@ -377,7 +377,7 @@ export default function App() {
 
           {/* Foto conferencista */}
           <div style={{position:"relative",borderRadius:16,overflow:"hidden",marginBottom:48,height:360}}>
-            <img src="/SECCIONCONFERENCIA1.jpeg" alt="Conferencia Juan Carlos Hernández"
+            <img src="./SECCIONCONFERENCIA1.jpeg" alt="Conferencia Juan Carlos Hernández"
               style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 30%"}} />
             <div style={{position:"absolute",inset:0,background:"linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%)"}} />
             <div style={{position:"absolute",top:"50%",left:48,transform:"translateY(-50%)",maxWidth:400}}>
@@ -432,7 +432,7 @@ export default function App() {
             </button>
           </div>
           <div style={{position:"relative",borderRadius:16,overflow:"hidden",height:480}}>
-            <img src="/TALLERES.jpeg" alt="Taller de liderazgo"
+            <img src="./TALLERES.jpeg" alt="Taller de liderazgo"
               style={{width:"100%",height:"100%",objectFit:"cover"}} />
           </div>
         </div>
