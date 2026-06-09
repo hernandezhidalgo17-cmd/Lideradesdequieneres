@@ -30,9 +30,24 @@ const FORMATOS = [
 ];
 
 const LIBROS = [
-  { title:"De Aplastado a Indispensable", sub:"El liderazgo operativo que transforma equipos y resultados", bg:"#F5F0E0", accent:GOLD },
-  { title:"Lidera desde Quien Eres", sub:"De gerente a líder que transforma personas", bg:DARK, accent:GOLD },
-  { title:"Lo Que Nadie Te Enseña Sobre Tu Jefe", sub:"Manejar hacia arriba", bg:"#2A1A1A", accent:"#CC3333" },
+  {
+    title:"De Aplastado a Indispensable",
+    sub:"El liderazgo operativo que transforma equipos y resultados",
+    bg:"#F5F0E0", accent:GOLD,
+    img:"/LIBRO1DEAPLASTADOAINDISPENSABLE.jpeg"
+  },
+  {
+    title:"Lidera desde Quien Eres",
+    sub:"De gerente a líder que transforma personas",
+    bg:DARK, accent:GOLD,
+    img:"/LIBRO2LIDERADESDEQUIENERES.jpeg"
+  },
+  {
+    title:"Lo Que Nadie Te Enseña Sobre Tu Jefe",
+    sub:"Manejar hacia arriba",
+    bg:"#2A1A1A", accent:"#CC3333",
+    img:"/LIBRO3LOQUENADIETEENSEÑADETUJEFE.jpeg"
+  },
 ];
 
 const CONFERENCIAS = [
@@ -149,18 +164,64 @@ export default function App() {
           </div>
         </div>
 
-        {/* Foto hero */}
+        {/* FOTO HERO */}
         <div style={{position:"relative",background:`linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)`,display:"flex",alignItems:"flex-end",justifyContent:"center",overflow:"hidden"}}>
-          <div style={{position:"absolute",top:40,right:40,textAlign:"right"}}>
+          <img
+            src="/IMAGENHEROPORTADADELSITIO.jpeg"
+            alt="Juan Carlos Hernández"
+            style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",opacity:0.85}}
+          />
+          <div style={{position:"absolute",top:0,left:0,right:0,bottom:0,background:"linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%)"}} />
+          <div style={{position:"absolute",top:40,right:40,textAlign:"right",zIndex:2}}>
             <div style={{fontFamily:"cursive",fontSize:28,color:GOLD,lineHeight:1.2}}>Juan Carlos<br/>Hernández</div>
-            <div style={{fontSize:12,color:"rgba(255,255,255,0.5)",marginTop:8,letterSpacing:1}}>Autor | Conferencista<br/>Mentor | Empresario</div>
+            <div style={{fontSize:12,color:"rgba(255,255,255,0.7)",marginTop:8,letterSpacing:1}}>Autor | Conferencista<br/>Mentor | Empresario</div>
           </div>
-          <div style={{position:"absolute",bottom:40,left:40,right:160,background:"rgba(201,168,76,0.1)",border:`1px solid rgba(201,168,76,0.3)`,borderRadius:8,padding:"16px 20px"}}>
-            <p style={{color:"rgba(255,255,255,0.8)",fontSize:14,lineHeight:1.6,margin:0,fontStyle:"italic"}}>
+          <div style={{position:"absolute",bottom:40,left:40,right:40,background:"rgba(0,0,0,0.5)",border:`1px solid rgba(201,168,76,0.4)`,borderRadius:8,padding:"16px 20px",zIndex:2}}>
+            <p style={{color:"rgba(255,255,255,0.9)",fontSize:14,lineHeight:1.6,margin:0,fontStyle:"italic"}}>
               "No se trata del puesto que tienes, se trata del impacto que dejas en las personas."
             </p>
           </div>
-          <div style={{width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:120,opacity:0.15}}>🎤</div>
+        </div>
+      </section>
+
+      {/* SOBRE MÍ */}
+      <section id="sobre" style={{padding:"80px 40px",background:DARK,overflow:"hidden"}}>
+        <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
+          <div style={{position:"relative"}}>
+            <img
+              src="/SOBREMI.jpeg"
+              alt="Juan Carlos Hernández"
+              style={{width:"100%",borderRadius:12,objectFit:"cover",height:520,display:"block"}}
+            />
+            <div style={{position:"absolute",bottom:-20,right:-20,background:GOLD,borderRadius:8,padding:"16px 24px",boxShadow:"0 8px 32px rgba(0,0,0,0.3)"}}>
+              <div style={{fontSize:28,fontWeight:"bold",color:WHITE,lineHeight:1}}>29</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.8)",letterSpacing:1}}>AÑOS DE<br/>EXPERIENCIA</div>
+            </div>
+          </div>
+          <div>
+            <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:16}}>SOBRE MÍ</div>
+            <h2 style={{fontSize:36,fontWeight:"bold",color:WHITE,marginBottom:24,lineHeight:1.2}}>
+              De las tiendas a los escenarios.
+            </h2>
+            <p style={{color:"rgba(255,255,255,0.7)",fontSize:16,lineHeight:1.8,marginBottom:20}}>
+              Con 29 años liderando operaciones en OXXO, Walmart, Soriana y Six Flags, aprendí que el verdadero liderazgo no se trata de números — se trata de las personas detrás de ellos.
+            </p>
+            <p style={{color:"rgba(255,255,255,0.7)",fontSize:16,lineHeight:1.8,marginBottom:32}}>
+              Hoy comparto ese conocimiento como autor, conferencista y mentor, porque lo que no se enseña en las aulas, lo enseña la operación real.
+            </p>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:32}}>
+              {[["26","Unidades gestionadas simultáneamente"],["300%","Rotación estabilizada en 6 meses"],["3","Libros publicados"],["$40K→$800","Faltantes reducidos por tienda"]].map(([n,d],i) => (
+                <div key={i} style={{borderLeft:`3px solid ${GOLD}`,paddingLeft:16}}>
+                  <div style={{fontSize:22,fontWeight:"bold",color:GOLD}}>{n}</div>
+                  <div style={{fontSize:12,color:"rgba(255,255,255,0.5)",lineHeight:1.4}}>{d}</div>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => scrollTo("contact")}
+              style={{background:GOLD,color:WHITE,border:"none",padding:"14px 32px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia",fontWeight:"bold",letterSpacing:1}}>
+              TRABAJEMOS JUNTOS →
+            </button>
+          </div>
         </div>
       </section>
 
@@ -280,13 +341,18 @@ export default function App() {
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:24,alignItems:"center"}}>
             {LIBROS.map((b,i) => (
-              <div key={i} style={{background:b.bg,borderRadius:12,padding:28,minHeight:200,display:"flex",flexDirection:"column",justifyContent:"space-between",cursor:"pointer"}}>
-                <div style={{fontSize:11,color:b.accent,letterSpacing:2,fontFamily:"monospace",marginBottom:12}}>LIBRO {i+1}</div>
-                <h3 style={{fontSize:15,color:i===0?DARK:WHITE,lineHeight:1.4,margin:"0 0 8px",fontWeight:"bold"}}>{b.title}</h3>
-                <p style={{fontSize:12,color:i===0?MGRAY:"rgba(255,255,255,0.6)",margin:"0 0 20px",lineHeight:1.5}}>{b.sub}</p>
-                <button style={{background:"transparent",border:`1px solid ${b.accent}`,color:b.accent,padding:"8px 16px",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:"Georgia",letterSpacing:1}}>
-                  COMPRAR →
-                </button>
+              <div key={i} style={{background:b.bg,borderRadius:12,overflow:"hidden",cursor:"pointer",transition:"all 0.2s",boxShadow:"0 4px 16px rgba(0,0,0,0.1)"}}
+                onMouseEnter={e => {e.currentTarget.style.transform="translateY(-6px)";e.currentTarget.style.boxShadow="0 12px 32px rgba(0,0,0,0.2)";}}
+                onMouseLeave={e => {e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 4px 16px rgba(0,0,0,0.1)";}}>
+                <img src={b.img} alt={b.title} style={{width:"100%",height:200,objectFit:"cover",display:"block"}} />
+                <div style={{padding:24}}>
+                  <div style={{fontSize:11,color:b.accent,letterSpacing:2,fontFamily:"monospace",marginBottom:8}}>LIBRO {i+1}</div>
+                  <h3 style={{fontSize:14,color:i===0?DARK:WHITE,lineHeight:1.4,margin:"0 0 8px",fontWeight:"bold"}}>{b.title}</h3>
+                  <p style={{fontSize:12,color:i===0?MGRAY:"rgba(255,255,255,0.6)",margin:"0 0 16px",lineHeight:1.5}}>{b.sub}</p>
+                  <button style={{background:"transparent",border:`1px solid ${b.accent}`,color:b.accent,padding:"8px 16px",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:"Georgia",letterSpacing:1}}>
+                    COMPRAR →
+                  </button>
+                </div>
               </div>
             ))}
             {/* Cita */}
@@ -302,19 +368,34 @@ export default function App() {
       </section>
 
       {/* CONFERENCIAS */}
-      <section id="conf" style={{padding:"80px 40px",background:LGRAY}}>
+      <section id="conf" style={{padding:"80px 40px",background:DARK,overflow:"hidden"}}>
         <div style={{maxWidth:960,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:48}}>
             <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:12}}>PARA EMPRESAS</div>
-            <h2 style={{fontSize:32,fontWeight:"bold",margin:0}}>CONFERENCIAS DE IMPACTO</h2>
+            <h2 style={{fontSize:32,fontWeight:"bold",color:WHITE,margin:0}}>CONFERENCIAS DE IMPACTO</h2>
           </div>
+
+          {/* Foto conferencista */}
+          <div style={{position:"relative",borderRadius:16,overflow:"hidden",marginBottom:48,height:360}}>
+            <img src="/SECCIONCONFERENCIA1.jpeg" alt="Conferencia Juan Carlos Hernández"
+              style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 30%"}} />
+            <div style={{position:"absolute",inset:0,background:"linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%)"}} />
+            <div style={{position:"absolute",top:"50%",left:48,transform:"translateY(-50%)",maxWidth:400}}>
+              <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:12}}>LIDERAZGO QUE GENERA RESULTADOS</div>
+              <p style={{color:WHITE,fontSize:20,lineHeight:1.6,fontStyle:"italic",margin:"0 0 20px"}}>
+                "Cada conferencia es una conversación honesta sobre lo que realmente pasa en las organizaciones."
+              </p>
+              <div style={{color:"rgba(255,255,255,0.6)",fontSize:13}}>— Juan Carlos Hernández</div>
+            </div>
+          </div>
+
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16,marginBottom:40}}>
             {CONFERENCIAS.map((c,i) => (
-              <div key={i} style={{background:WHITE,borderRadius:10,padding:"20px 24px",display:"flex",alignItems:"center",gap:14,cursor:"pointer",border:`1px solid rgba(0,0,0,0.06)`,transition:"all 0.2s"}}
-                onMouseEnter={e => {e.currentTarget.style.borderColor=GOLD;e.currentTarget.style.boxShadow=`0 4px 16px rgba(201,168,76,0.15)`;}}
-                onMouseLeave={e => {e.currentTarget.style.borderColor="rgba(0,0,0,0.06)";e.currentTarget.style.boxShadow="none";}}>
+              <div key={i} style={{background:"rgba(255,255,255,0.05)",borderRadius:10,padding:"20px 24px",display:"flex",alignItems:"center",gap:14,cursor:"pointer",border:`1px solid rgba(255,255,255,0.08)`,transition:"all 0.2s"}}
+                onMouseEnter={e => {e.currentTarget.style.borderColor=GOLD;e.currentTarget.style.background="rgba(201,168,76,0.1)";}}
+                onMouseLeave={e => {e.currentTarget.style.borderColor="rgba(255,255,255,0.08)";e.currentTarget.style.background="rgba(255,255,255,0.05)";}}>
                 <span style={{color:GOLD,fontFamily:"monospace",fontSize:12,minWidth:28}}>0{i+1}</span>
-                <span style={{fontSize:14,color:DARK}}>{c}</span>
+                <span style={{fontSize:14,color:WHITE}}>{c}</span>
               </div>
             ))}
           </div>
@@ -323,6 +404,36 @@ export default function App() {
               style={{background:GOLD,color:WHITE,border:"none",padding:"16px 48px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia",fontWeight:"bold",letterSpacing:1}}>
               AGENDAR CONFERENCIA →
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* TALLERES */}
+      <section id="talleres" style={{padding:"80px 40px",background:LGRAY}}>
+        <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
+          <div>
+            <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:16}}>TALLERES</div>
+            <h2 style={{fontSize:32,fontWeight:"bold",marginBottom:20}}>Formación que se queda en el equipo</h2>
+            <p style={{color:MGRAY,fontSize:16,lineHeight:1.8,marginBottom:32}}>
+              Los talleres no son charlas — son sesiones de trabajo donde los líderes practican, discuten y se llevan herramientas listas para aplicar el lunes siguiente.
+            </p>
+            {[["🎯","Talleres de 4 a 8 horas","Formato intensivo para equipos directivos."],["👥","Workshops para mandos medios","Herramientas prácticas de gestión operativa."],["🌱","Programas modulares","Formación continua a la medida de tu empresa."]].map(([e,n,d],i) => (
+              <div key={i} style={{display:"flex",gap:16,marginBottom:20}}>
+                <span style={{fontSize:20,flexShrink:0}}>{e}</span>
+                <div>
+                  <div style={{fontSize:14,fontWeight:"bold",color:DARK,marginBottom:4}}>{n}</div>
+                  <div style={{fontSize:13,color:MGRAY}}>{d}</div>
+                </div>
+              </div>
+            ))}
+            <button onClick={() => scrollTo("contact")}
+              style={{background:GOLD,color:WHITE,border:"none",padding:"14px 32px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia",fontWeight:"bold",letterSpacing:1,marginTop:12}}>
+              SOLICITAR INFORMACIÓN →
+            </button>
+          </div>
+          <div style={{position:"relative",borderRadius:16,overflow:"hidden",height:480}}>
+            <img src="/TALLERES.jpeg" alt="Taller de liderazgo"
+              style={{width:"100%",height:"100%",objectFit:"cover"}} />
           </div>
         </div>
       </section>
