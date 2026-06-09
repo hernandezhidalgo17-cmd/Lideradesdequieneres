@@ -34,19 +34,19 @@ const LIBROS = [
     title:"De Aplastado a Indispensable",
     sub:"El liderazgo operativo que transforma equipos y resultados",
     bg:"#F5F0E0", accent:GOLD,
-    img:"/LIBRO1DEAPLASTADOAINDISPENSABLE.jpeg"
+    img:"./LIBRO1DEAPLASTADOAINDISPENSABLE.jpeg"
   },
   {
     title:"Lidera desde Quien Eres",
     sub:"De gerente a líder que transforma personas",
     bg:DARK, accent:GOLD,
-    img:"/LIBRO2LIDERADESDEQUIENERES.jpeg"
+    img:"./LIBRO2LIDERADESDEQUIENERES.jpeg"
   },
   {
     title:"Lo Que Nadie Te Enseña Sobre Tu Jefe",
     sub:"Manejar hacia arriba",
     bg:"#2A1A1A", accent:"#CC3333",
-    img:"/LIBRO3LOQUENADIETEENSEÑADETUJEFE.jpeg"
+    img:"./LIBRO3LOQUENADIETEENSEÑADETUJEFE.jpeg"
   },
 ];
 
