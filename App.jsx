@@ -449,7 +449,7 @@ export default function App() {
           {/* COMUNIDAD */}
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>COMUNIDAD</div>
-            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","#"],["🎙","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
+            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","https://www.linkedin.com/in/juan-carlos-hernandez-hidalgo-02756336a"],["🎙","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
               <a key={i} href={url} target="_blank" rel="noopener noreferrer" style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer",textDecoration:"none"}}
                 onMouseEnter={ev => ev.currentTarget.style.opacity="0.7"}
                 onMouseLeave={ev => ev.currentTarget.style.opacity="1"}>
