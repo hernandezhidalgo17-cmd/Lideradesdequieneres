@@ -11,19 +11,19 @@ const NIVELES = [
   { n:2, emoji:"🎯", title:"Accountability", color:GOLD },
   { n:3, emoji:"👑", title:"Liderazgo", color:"#E8834A" },
   { n:4, emoji:"🤝", title:"Servicio", color:"#4CAF82" },
-  { n:5, emoji:"🗣", title:"Comunicación", color:"#5BA4CF" },
+  { n:5, emoji:"🗣️", title:"Comunicación", color:"#5BA4CF" },
   { n:6, emoji:"❤️", title:"Inteligencia\nEmocional", color:"#E87B8A" },
   { n:7, emoji:"📅", title:"Hábitos", color:"#A8C44C" },
   { n:8, emoji:"🌱", title:"Cultura", color:"#4CB8C4" },
   { n:9, emoji:"🚀", title:"Desarrollo\nProfesional", color:"#B4A4E8" },
-  { n:10, emoji:"⛩", title:"Proverbios\nJaponeses", color:"#C4844C" },
+  { n:10, emoji:"⛩️", title:"Proverbios\nJaponeses", color:"#C4844C" },
 ];
 
 const FORMATOS = [
   { icon:"📚", title:"Libros", desc:"Ideas que forman y transforman." },
   { icon:"🎧", title:"Audiolibros", desc:"Escucha donde quieras." },
   { icon:"▶️", title:"Series de Video", desc:"Aprendizaje práctico en videos cortos." },
-  { icon:"🎙", title:"Podcast", desc:"Historias reales e ideas aplicables.", badge:"Spotify" },
+  { icon:"🎙️", title:"Podcast", desc:"Historias reales e ideas aplicables.", badge:"Spotify" },
   { icon:"🎤", title:"Conferencias", desc:"Charlas magistrales que inspiran y generan impacto." },
   { icon:"👥", title:"Talleres", desc:"Formación práctica para equipos y líderes." },
   { icon:"🤖", title:"Mentor IA", desc:"Tu coach personal disponible 24/7." },
@@ -109,7 +109,7 @@ export default function App() {
 
   const NavBtn = ({id, label}) => (
     <button onClick={() => scrollTo(id)}
-      style={{background:"none",border:"none",cursor:"pointer",fontSize:13,color:DARK,fontFamily:"Georgia",letterSpacing:0.5,padding:"4px 0",borderBottom:section===id?`2px solid ${GOLD}`:"2px solid transparent",transition:"all 0.2s"}}>
+      style={{background:"none",border:"none",cursor:"pointer",fontSize:13,color:DARK,fontFamily:"Georgia",letterSpacing:0.5,padding:"4px 0",borderBottom:section===id?2px solid ${GOLD}:"2px solid transparent",transition:"all 0.2s"}}>
       {label}
     </button>
   );
@@ -118,9 +118,9 @@ export default function App() {
     <div style={{background:WHITE,color:DARK,fontFamily:"Georgia,serif",minHeight:"100vh",overflowX:"hidden"}}>
 
       {/* NAV */}
-      <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:200,background:"rgba(255,255,255,0.97)",backdropFilter:"blur(10px)",borderBottom:`1px solid rgba(0,0,0,0.08)`,height:64,display:"flex",alignItems:"center",padding:"0 40px",gap:0}}>
+      <nav style={{position:"fixed",top:0,left:0,right:0,zIndex:200,background:"rgba(255,255,255,0.97)",backdropFilter:"blur(10px)",borderBottom:1px solid rgba(0,0,0,0.08),height:64,display:"flex",alignItems:"center",padding:"0 40px",gap:0}}>
         <div style={{display:"flex",alignItems:"center",gap:10,marginRight:48}}>
-          <div style={{width:28,height:28,border:`2px solid ${GOLD}`,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div style={{width:28,height:28,border:2px solid ${GOLD},borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center"}}>
             <span style={{color:GOLD,fontSize:10,fontFamily:"monospace",fontWeight:"bold"}}>✦</span>
           </div>
           <div>
@@ -136,7 +136,7 @@ export default function App() {
       </nav>
 
       {/* HERO */}
-      <section id="inicio" style={{minHeight:"100vh",display:"grid",gridTemplateColumns:"1fr 1fr",gap:0,paddingTop:64,background:WHITE,overflow:"hidden"}}>
+      <section id="inicio" style={{minHeight:"100vh",display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(300px, 1fr))",gap:0,paddingTop:64,background:WHITE,overflow:"hidden"}}>
         <div style={{display:"flex",flexDirection:"column",justifyContent:"center",padding:"80px 48px 80px 60px"}}>
           <div style={{fontSize:11,letterSpacing:4,color:GOLD,fontFamily:"monospace",marginBottom:24}}>LIDERAZGO PRÁCTICO PARA PERSONAS QUE QUIEREN</div>
           <h1 style={{fontSize:"clamp(36px,5vw,72px)",lineHeight:1.0,margin:"0 0 16px",fontWeight:"bold",letterSpacing:-1}}>
@@ -161,14 +161,14 @@ export default function App() {
               COMENZAR EVALUACIÓN →
             </button>
             <button onClick={() => scrollTo("libros")}
-              style={{background:"transparent",color:DARK,border:`2px solid ${DARK}`,padding:"16px 32px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia",letterSpacing:1}}>
+              style={{background:"transparent",color:DARK,border:2px solid ${DARK},padding:"16px 32px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia",letterSpacing:1}}>
               VER LIBROS
             </button>
           </div>
         </div>
 
         {/* FOTO HERO */}
-        <div style={{position:"relative",background:`linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)`,display:"flex",alignItems:"flex-end",justifyContent:"center",overflow:"hidden"}}>
+        <div style={{position:"relative",background:linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%),display:"flex",alignItems:"flex-end",justifyContent:"center",overflow:"hidden"}}>
           <img
             src="./IMAGENHEROPORTADADELSITIO.jpeg"
             alt="Juan Carlos Hernández"
@@ -179,7 +179,7 @@ export default function App() {
             <div style={{fontFamily:"cursive",fontSize:28,color:GOLD,lineHeight:1.2}}>Juan Carlos<br/>Hernández</div>
             <div style={{fontSize:12,color:"rgba(255,255,255,0.7)",marginTop:8,letterSpacing:1}}>Autor | Conferencista<br/>Mentor | Empresario</div>
           </div>
-          <div style={{position:"absolute",bottom:40,left:40,right:40,background:"rgba(0,0,0,0.5)",border:`1px solid rgba(201,168,76,0.4)`,borderRadius:8,padding:"16px 20px",zIndex:2}}>
+          <div style={{position:"absolute",bottom:40,left:40,right:40,background:"rgba(0,0,0,0.5)",border:1px solid rgba(201,168,76,0.4),borderRadius:8,padding:"16px 20px",zIndex:2}}>
             <p style={{color:"rgba(255,255,255,0.9)",fontSize:14,lineHeight:1.6,margin:0,fontStyle:"italic"}}>
               "No se trata del puesto que tienes, se trata del impacto que dejas en las personas."
             </p>
@@ -212,9 +212,9 @@ export default function App() {
             <p style={{color:"rgba(255,255,255,0.7)",fontSize:16,lineHeight:1.8,marginBottom:32}}>
               Hoy comparto ese conocimiento como autor, conferencista y mentor, porque lo que no se enseña en las aulas, lo enseña la operación real.
             </p>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:32}}>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:16,marginBottom:32}}>
               {[["26","Unidades gestionadas simultáneamente"],["300%","Rotación estabilizada en 6 meses"],["3","Libros publicados"],["$40K→$800","Faltantes reducidos por tienda"]].map(([n,d],i) => (
-                <div key={i} style={{borderLeft:`3px solid ${GOLD}`,paddingLeft:16}}>
+                <div key={i} style={{borderLeft:3px solid ${GOLD},paddingLeft:16}}>
                   <div style={{fontSize:22,fontWeight:"bold",color:GOLD}}>{n}</div>
                   <div style={{fontSize:12,color:"rgba(255,255,255,0.5)",lineHeight:1.4}}>{d}</div>
                 </div>
@@ -229,7 +229,7 @@ export default function App() {
       </section>
 
       {/* BANNER EVALUACIÓN */}
-      <section id="test" style={{background:LGRAY,padding:"48px 40px",borderTop:`4px solid ${GOLD}`}}>
+      <section id="test" style={{background:LGRAY,padding:"48px 40px",borderTop:4px solid ${GOLD}}}>
         <div style={{maxWidth:960,margin:"0 auto"}}>
           {testStep === "intro" && (
             <div style={{display:"flex",alignItems:"center",gap:32,flexWrap:"wrap"}}>
@@ -253,13 +253,13 @@ export default function App() {
                 <span style={{fontSize:13,color:GOLD,fontFamily:"monospace"}}>{Math.round((testIdx/TEST_QS.length)*100)}%</span>
               </div>
               <div style={{background:"#E0E0E0",borderRadius:8,height:6,marginBottom:32}}>
-                <div style={{background:GOLD,borderRadius:8,height:6,width:`${(testIdx/TEST_QS.length)*100}%`,transition:"width 0.4s"}}/>
+                <div style={{background:GOLD,borderRadius:8,height:6,width:${(testIdx/TEST_QS.length)*100}%,transition:"width 0.4s"}}/>
               </div>
               <h3 style={{fontSize:20,marginBottom:32,fontWeight:"normal",lineHeight:1.5}}>{TEST_QS[testIdx]}</h3>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:12}}>
                 {[["Sí, me identifico",true],["No tanto",false]].map(([l,v]) => (
                   <button key={l} onClick={() => answerTest(v)}
-                    style={{background:WHITE,border:`2px solid ${v?GOLD:"#DDD"}`,borderRadius:8,padding:"16px",cursor:"pointer",fontSize:15,fontFamily:"Georgia",color:v?GOLD:DARK,transition:"all 0.2s"}}
+                    style={{background:WHITE,border:2px solid ${v?GOLD:"#DDD"},borderRadius:8,padding:"16px",cursor:"pointer",fontSize:15,fontFamily:"Georgia",color:v?GOLD:DARK,transition:"all 0.2s"}}
                     onMouseEnter={e => e.currentTarget.style.borderColor=GOLD}
                     onMouseLeave={e => e.currentTarget.style.borderColor=v?GOLD:"#DDD"}>
                     {l}
@@ -271,7 +271,7 @@ export default function App() {
 
           {testStep === "result" && testResult && (
             <div style={{maxWidth:640,margin:"0 auto",textAlign:"center"}}>
-              <div style={{background:WHITE,borderRadius:16,padding:40,border:`2px solid ${testResult.color}`}}>
+              <div style={{background:WHITE,borderRadius:16,padding:40,border:2px solid ${testResult.color}}}>
                 <div style={{fontSize:11,color:testResult.color,letterSpacing:3,marginBottom:12,fontFamily:"monospace"}}>{testResult.level}</div>
                 <h3 style={{fontSize:26,color:DARK,marginBottom:12}}>Serie recomendada: {testResult.serie}</h3>
                 <p style={{color:MGRAY,fontSize:16,lineHeight:1.7,marginBottom:28}}>{testResult.msg}</p>
@@ -281,7 +281,7 @@ export default function App() {
                     Ver mi serie →
                   </button>
                   <button onClick={() => {setTestStep("intro");setTestIdx(0);setTestScore(0);}}
-                    style={{background:"transparent",color:MGRAY,border:`1px solid #CCC`,padding:"14px 24px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia"}}>
+                    style={{background:"transparent",color:MGRAY,border:1px solid #CCC,padding:"14px 24px",borderRadius:4,cursor:"pointer",fontSize:14,fontFamily:"Georgia"}}>
                     Repetir
                   </button>
                 </div>
@@ -298,12 +298,12 @@ export default function App() {
             <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:12}}>ACADEMIA</div>
             <h2 style={{fontSize:32,fontWeight:"bold",margin:0}}>TU RUTA DE DESARROLLO</h2>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:8}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:8}}>
             {NIVELES.map((n,i) => (
-              <div key={i} style={{textAlign:"center",padding:"20px 12px",border:`1px solid rgba(0,0,0,0.08)`,borderRadius:10,cursor:"pointer",transition:"all 0.2s"}}
+              <div key={i} style={{textAlign:"center",padding:"20px 12px",border:1px solid rgba(0,0,0,0.08),borderRadius:10,cursor:"pointer",transition:"all 0.2s"}}
                 onMouseEnter={e => {e.currentTarget.style.borderColor=n.color;e.currentTarget.style.transform="translateY(-4px)";}}
                 onMouseLeave={e => {e.currentTarget.style.borderColor="rgba(0,0,0,0.08)";e.currentTarget.style.transform="translateY(0)";}}>
-                <div style={{width:40,height:40,borderRadius:"50%",background:n.color+"20",border:`2px solid ${n.color}`,display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 10px",fontSize:18}}>
+                <div style={{width:40,height:40,borderRadius:"50%",background:n.color+"20",border:2px solid ${n.color},display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 10px",fontSize:18}}>
                   {n.emoji}
                 </div>
                 <div style={{fontSize:11,color:n.color,fontFamily:"monospace",marginBottom:4}}>0{n.n}</div>
@@ -320,10 +320,10 @@ export default function App() {
           <div style={{textAlign:"center",marginBottom:48}}>
             <h2 style={{fontSize:32,fontWeight:"bold",margin:0}}>APRENDE COMO PREFIERAS</h2>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(7,1fr)",gap:12}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(100px, 1fr))",gap:12}}>
             {FORMATOS.map((f,i) => (
               <div key={i} style={{textAlign:"center",padding:"24px 12px",background:WHITE,borderRadius:12,boxShadow:"0 2px 8px rgba(0,0,0,0.06)",cursor:"pointer",transition:"all 0.2s"}}
-                onMouseEnter={e => {e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow=`0 8px 24px rgba(201,168,76,0.2)`;}}
+                onMouseEnter={e => {e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.boxShadow=0 8px 24px rgba(201,168,76,0.2);}}
                 onMouseLeave={e => {e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 2px 8px rgba(0,0,0,0.06)";}}>
                 <div style={{fontSize:28,marginBottom:10}}>{f.icon}</div>
                 <div style={{fontSize:12,fontWeight:"bold",color:DARK,marginBottom:6}}>{f.title}</div>
@@ -342,7 +342,7 @@ export default function App() {
             <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:12}}>LIBROS</div>
             <h2 style={{fontSize:32,fontWeight:"bold",margin:0}}>BIBLIOTECA DE CONOCIMIENTO</h2>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr 1fr",gap:24,alignItems:"center"}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))",gap:24,alignItems:"center"}}>
             {LIBROS.map((b,i) => (
               <div key={i} style={{background:b.bg,borderRadius:12,overflow:"hidden",cursor:"pointer",transition:"all 0.2s",boxShadow:"0 4px 16px rgba(0,0,0,0.1)"}}
                 onMouseEnter={e => {e.currentTarget.style.transform="translateY(-6px)";e.currentTarget.style.boxShadow="0 12px 32px rgba(0,0,0,0.2)";}}
@@ -353,14 +353,14 @@ export default function App() {
                   <h3 style={{fontSize:14,color:i===0?DARK:WHITE,lineHeight:1.4,margin:"0 0 8px",fontWeight:"bold"}}>{b.title}</h3>
                   <p style={{fontSize:12,color:i===0?MGRAY:"rgba(255,255,255,0.6)",margin:"0 0 16px",lineHeight:1.5}}>{b.sub}</p>
                   <a href={b.url} target="_blank" rel="noopener noreferrer"
-                    style={{display:"inline-block",background:"transparent",border:`1px solid ${b.accent}`,color:b.accent,padding:"8px 16px",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:"Georgia",letterSpacing:1,textDecoration:"none"}}>
+                    style={{display:"inline-block",background:"transparent",border:1px solid ${b.accent},color:b.accent,padding:"8px 16px",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:"Georgia",letterSpacing:1,textDecoration:"none"}}>
                     COMPRAR →
                   </a>
                 </div>
               </div>
             ))}
             {/* Cita */}
-            <div style={{padding:28,borderLeft:`4px solid ${GOLD}`}}>
+            <div style={{padding:28,borderLeft:4px solid ${GOLD}}}>
               <div style={{fontSize:32,color:GOLD,marginBottom:12}}>"</div>
               <p style={{fontSize:16,lineHeight:1.7,color:DARK,fontStyle:"italic",margin:"0 0 16px"}}>
                 No se trata del puesto que tienes, se trata del <strong>impacto</strong> que dejas en las personas.
@@ -393,9 +393,9 @@ export default function App() {
             </div>
           </div>
 
-          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16,marginBottom:40}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))",gap:16,marginBottom:40}}>
             {CONFERENCIAS.map((c,i) => (
-              <div key={i} style={{background:"rgba(255,255,255,0.05)",borderRadius:10,padding:"20px 24px",display:"flex",alignItems:"center",gap:14,cursor:"pointer",border:`1px solid rgba(255,255,255,0.08)`,transition:"all 0.2s"}}
+              <div key={i} style={{background:"rgba(255,255,255,0.05)",borderRadius:10,padding:"20px 24px",display:"flex",alignItems:"center",gap:14,cursor:"pointer",border:1px solid rgba(255,255,255,0.08),transition:"all 0.2s"}}
                 onMouseEnter={e => {e.currentTarget.style.borderColor=GOLD;e.currentTarget.style.background="rgba(201,168,76,0.1)";}}
                 onMouseLeave={e => {e.currentTarget.style.borderColor="rgba(255,255,255,0.08)";e.currentTarget.style.background="rgba(255,255,255,0.05)";}}>
                 <span style={{color:GOLD,fontFamily:"monospace",fontSize:12,minWidth:28}}>0{i+1}</span>
@@ -449,7 +449,7 @@ export default function App() {
           {/* COMUNIDAD */}
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>COMUNIDAD</div>
-            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","https://www.linkedin.com/in/juan-carlos-hernandez-hidalgo-02756336a"],["🎙","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
+            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","https://www.linkedin.com/in/juan-carlos-hernandez-hidalgo-02756336a"],["🎙️","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
               <a key={i} href={url} target="_blank" rel="noopener noreferrer" style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer",textDecoration:"none"}}
                 onMouseEnter={ev => ev.currentTarget.style.opacity="0.7"}
                 onMouseLeave={ev => ev.currentTarget.style.opacity="1"}>
@@ -502,10 +502,10 @@ export default function App() {
             <div style={{display:"flex",flexDirection:"column",gap:12,textAlign:"left"}}>
               {[["name","Tu nombre"],["email","Tu correo"]].map(([k,ph]) => (
                 <input key={k} placeholder={ph} value={form[k]} onChange={e => setForm({...form,[k]:e.target.value})}
-                  style={{background:WHITE,border:`1px solid #DDD`,borderRadius:6,padding:"14px 18px",color:DARK,fontSize:15,fontFamily:"Georgia",outline:"none"}}/>
+                  style={{background:WHITE,border:1px solid #DDD,borderRadius:6,padding:"14px 18px",color:DARK,fontSize:15,fontFamily:"Georgia",outline:"none"}}/>
               ))}
               <textarea rows={4} placeholder="¿En qué te puedo ayudar?" value={form.msg} onChange={e => setForm({...form,msg:e.target.value})}
-                style={{background:WHITE,border:`1px solid #DDD`,borderRadius:6,padding:"14px 18px",color:DARK,fontSize:15,fontFamily:"Georgia",resize:"vertical",outline:"none"}}/>
+                style={{background:WHITE,border:1px solid #DDD,borderRadius:6,padding:"14px 18px",color:DARK,fontSize:15,fontFamily:"Georgia",resize:"vertical",outline:"none"}}/>
               <button onClick={() => {if(form.name&&form.email) setSent(true);}}
                 style={{background:GOLD,color:WHITE,border:"none",padding:"16px",borderRadius:6,cursor:"pointer",fontSize:15,fontFamily:"Georgia",fontWeight:"bold",letterSpacing:1}}>
                 ENVIAR MENSAJE →
@@ -513,7 +513,7 @@ export default function App() {
               <p style={{color:MGRAY,fontSize:13,textAlign:"center"}}>📞 744 310 7220 · hernandezhidalgo17@gmail.com</p>
             </div>
           ) : (
-            <div style={{background:WHITE,border:`2px solid ${GOLD}`,borderRadius:12,padding:48}}>
+            <div style={{background:WHITE,border:2px solid ${GOLD},borderRadius:12,padding:48}}>
               <div style={{fontSize:40,marginBottom:12}}>✓</div>
               <p style={{color:GOLD,fontSize:18,fontWeight:"bold"}}>¡Mensaje enviado!</p>
               <p style={{color:MGRAY}}>Te contactaré en menos de 24 horas.</p>
@@ -544,7 +544,7 @@ export default function App() {
       {/* MENTOR IA - CHAT */}
       <div id="mentor" style={{position:"fixed",bottom:24,right:24,zIndex:999}}>
         {chatOpen && (
-          <div style={{width:360,background:WHITE,border:`1px solid rgba(0,0,0,0.1)`,borderRadius:16,marginBottom:12,overflow:"hidden",boxShadow:"0 16px 48px rgba(0,0,0,0.15)"}}>
+          <div style={{width:360,background:WHITE,border:1px solid rgba(0,0,0,0.1),borderRadius:16,marginBottom:12,overflow:"hidden",boxShadow:"0 16px 48px rgba(0,0,0,0.15)"}}>
             <div style={{background:DARK,padding:"16px 20px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <div>
                 <div style={{color:GOLD,fontFamily:"monospace",fontSize:11,letterSpacing:2}}>🤖 MENTOR IA</div>
@@ -561,11 +561,11 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div style={{padding:"12px 16px",borderTop:`1px solid rgba(0,0,0,0.06)`,background:WHITE}}>
+            <div style={{padding:"12px 16px",borderTop:1px solid rgba(0,0,0,0.06),background:WHITE}}>
               <p style={{fontSize:11,color:MGRAY,marginBottom:8,letterSpacing:1}}>PREGUNTAS FRECUENTES</p>
               {[["¿Qué libro necesito?","Si sientes que trabajas mucho y avanzas poco → 'De Aplastado a Indispensable'. Si tienes personas a cargo → 'Lidera desde Quien Eres'."],["¿Por dónde empiezo?","Depende de tu rol. Colaborador → Discernimiento. Supervisor → Accountability. Gerente → Liderazgo. Dueño → Servicio y Cultura."],["¿Cómo agendo una conferencia?","Escríbeme a hernandezhidalgo17@gmail.com o al 744 310 7220. Tenemos disponibilidad para CDMX y toda la república."]].map((f,i) => (
                 <button key={i} onClick={() => setChatMsgs(prev => [...prev,{type:"user",text:f[0]},{type:"bot",text:f[1]}])}
-                  style={{background:LGRAY,border:`1px solid rgba(0,0,0,0.08)`,borderRadius:6,padding:"8px 12px",cursor:"pointer",textAlign:"left",fontSize:12,color:DARK,fontFamily:"Georgia",marginBottom:6,width:"100%"}}>
+                  style={{background:LGRAY,border:1px solid rgba(0,0,0,0.08),borderRadius:6,padding:"8px 12px",cursor:"pointer",textAlign:"left",fontSize:12,color:DARK,fontFamily:"Georgia",marginBottom:6,width:"100%"}}>
                   {f[0]}
                 </button>
               ))}
@@ -573,7 +573,7 @@ export default function App() {
           </div>
         )}
         <button onClick={() => setChatOpen(!chatOpen)}
-          style={{width:56,height:56,borderRadius:"50%",background:GOLD,border:"none",cursor:"pointer",boxShadow:`0 4px 20px rgba(201,168,76,0.4)`,fontSize:22,display:"flex",alignItems:"center",justifyContent:"center",marginLeft:"auto"}}>
+          style={{width:56,height:56,borderRadius:"50%",background:GOLD,border:"none",cursor:"pointer",boxShadow:0 4px 20px rgba(201,168,76,0.4),fontSize:22,display:"flex",alignItems:"center",justifyContent:"center",marginLeft:"auto"}}>
           {chatOpen ? "×" : "🤖"}
         </button>
       </div>
