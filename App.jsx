@@ -72,6 +72,17 @@ const TEST_QS = [
   "¿Quieres crecer a un puesto de mayor liderazgo?",
 ];
 
+// ─── BLOG DATA ────────────────────────────────────────────────
+const BLOG_POSTS = [
+  {
+    slug: "checklist-5-puntos",
+    title: "Checklist de 5 puntos para una visita de tienda efectiva",
+    category: "Liderazgo y Equipos",
+    date: "Junio 2026",
+    excerpt: "Hay una diferencia enorme entre caminar una tienda y visitarla de verdad. Después de 29 años en operaciones multiunidad, desarrollé un sistema que aplico sin excepción.",
+  },
+];
+
 function getResult(score) {
   if (score <= 3) return { level:"Nivel 1", serie:"Discernimiento", color:"#7B68EE", msg:"Tu punto de partida es aprender a leer mejor las situaciones antes de actuar." };
   if (score <= 5) return { level:"Nivel 2", serie:"Accountability", color:GOLD, msg:"Necesitas herramientas para generar resultados consistentes en tu equipo." };
@@ -79,8 +90,242 @@ function getResult(score) {
   return { level:"Nivel 4", serie:"Cultura y Servicio", color:"#4CAF82", msg:"Tu enfoque debe estar en crear entornos donde las personas quieran dar lo mejor." };
 }
 
+// ─── DOWNLOAD BANNER ─────────────────────────────────────────
+function DownloadBanner({ headline, description, ctaLabel, ctaHref }) {
+  return (
+    <div style={{
+      display:"flex", alignItems:"center", gap:20, flexWrap:"wrap",
+      background:DARK, borderRadius:14, padding:"28px 32px", margin:"40px 0",
+    }}>
+      <div style={{ color:GOLD, flexShrink:0, display:"flex", alignItems:"center" }}>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </div>
+      <div style={{ flex:1, minWidth:180 }}>
+        <div style={{ fontSize:15, fontWeight:"bold", color:WHITE, marginBottom:4 }}>{headline}</div>
+        <div style={{ fontSize:13, color:"rgba(255,255,255,0.5)", lineHeight:1.5 }}>{description}</div>
+      </div>
+      <a href={ctaHref} target="_blank" rel="noopener noreferrer"
+        style={{
+          flexShrink:0, display:"inline-block", background:GOLD, color:DARK,
+          fontSize:13, fontWeight:"bold", fontFamily:"Georgia",
+          textDecoration:"none", padding:"12px 24px", borderRadius:8,
+          letterSpacing:0.5, whiteSpace:"nowrap",
+        }}
+        onMouseEnter={e => e.currentTarget.style.background="#b8940f"}
+        onMouseLeave={e => e.currentTarget.style.background=GOLD}
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  );
+}
+
+// ─── BLOG INDEX ───────────────────────────────────────────────
+function BlogIndex({ onSelectPost }) {
+  return (
+    <div style={{ maxWidth:860, margin:"0 auto", padding:"64px 40px" }}>
+      {/* Header */}
+      <div style={{ textAlign:"center", marginBottom:56 }}>
+        <div style={{ fontSize:11, color:GOLD, letterSpacing:4, fontFamily:"monospace", marginBottom:12 }}>BLOG</div>
+        <h1 style={{ fontSize:"clamp(28px,4vw,42px)", fontWeight:"bold", margin:"0 0 16px", color:DARK }}>
+          Ideas para líderes de operación
+        </h1>
+        <p style={{ fontSize:16, color:MGRAY, maxWidth:500, margin:"0 auto", lineHeight:1.6 }}>
+          Herramientas, marcos y reflexiones de 29 años en retail multiunidad.
+        </p>
+      </div>
+      {/* Cards */}
+      <div style={{ display:"flex", flexDirection:"column", gap:24 }}>
+        {BLOG_POSTS.map(post => (
+          <article key={post.slug}
+            style={{
+              border:`1px solid #e5e5e5`, borderRadius:12, padding:"32px 36px",
+              background:WHITE, cursor:"pointer", transition:"all 0.2s",
+            }}
+            onMouseEnter={e => { e.currentTarget.style.boxShadow="0 8px 28px rgba(0,0,0,0.08)"; e.currentTarget.style.transform="translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.boxShadow="none"; e.currentTarget.style.transform="translateY(0)"; }}
+            onClick={() => onSelectPost(post.slug)}
+          >
+            <div style={{ fontSize:11, fontWeight:"bold", letterSpacing:3, textTransform:"uppercase", color:GOLD, marginBottom:12, fontFamily:"monospace" }}>
+              {post.category}
+            </div>
+            <h2 style={{ fontSize:20, fontWeight:"bold", color:DARK, margin:"0 0 12px", lineHeight:1.3 }}>
+              {post.title}
+            </h2>
+            <p style={{ fontSize:15, color:MGRAY, lineHeight:1.65, margin:"0 0 20px" }}>{post.excerpt}</p>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8 }}>
+              <time style={{ fontSize:13, color:"#bbb" }}>{post.date}</time>
+              <span style={{ fontSize:13, fontWeight:"bold", color:GOLD }}>Leer artículo →</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── BLOG POST: CHECKLIST 5 PUNTOS ───────────────────────────
+function PostChecklist({ onBack }) {
+  const checklistItems = [
+    {
+      n:"01", title:"Ejecución comercial",
+      body:"¿El planograma está respetado? ¿Los precios son correctos y visibles? ¿Los productos de mayor margen tienen el espacio que merecen? Esto no es estética — es dinero. Una tienda con mala ejecución comercial pierde margen sin que nadie lo note en el día a día.",
+    },
+    {
+      n:"02", title:"Gente",
+      body:"¿El equipo está completo en turno? ¿El gerente de tienda conoce sus indicadores del día? ¿Hay alguien que claramente no debería estar en ese puesto, o alguien con potencial que nadie está desarrollando? La gente es el único indicador que impacta todos los demás.",
+    },
+    {
+      n:"03", title:"Limpieza e imagen",
+      body:"No como inspección de sanidad, sino como señal de cultura. Una tienda limpia y ordenada dice mucho sobre el nivel de exigencia del líder que la opera. Si el piso está sucio, no es problema del personal de limpieza — es problema del gerente de tienda que normalizó ese estándar.",
+    },
+    {
+      n:"04", title:"Indicadores del día",
+      body:"Venta vs. objetivo, ticket promedio, tráfico, merma visible. Cinco minutos con los números del día te dicen más que una hora caminando sin contexto. Un gerente de zona que no llega con los indicadores en la mano llega sin argumentos.",
+    },
+    {
+      n:"05", title:"Compromisos de la visita anterior",
+      body:"Aquí está la pieza que más se omite: revisar qué se acordó en la última visita y qué se cumplió. Sin esto, cada visita empieza de cero. Con esto, construyes cultura de accountability — el gerente de tienda sabe que los acuerdos se revisan, no se olvidan.",
+    },
+  ];
+
+  return (
+    <div style={{ maxWidth:720, margin:"0 auto", padding:"48px 40px 80px" }}>
+
+      {/* Breadcrumb */}
+      <button onClick={onBack}
+        style={{ background:"none", border:"none", cursor:"pointer", color:GOLD, fontSize:14, fontFamily:"Georgia", fontWeight:"bold", padding:0, marginBottom:32 }}>
+        ← Blog
+      </button>
+
+      {/* Header */}
+      <div style={{ marginBottom:36 }}>
+        <div style={{ fontSize:11, color:GOLD, letterSpacing:3, fontFamily:"monospace", marginBottom:12 }}>LIDERAZGO Y EQUIPOS · JUNIO 2026</div>
+        <h1 style={{ fontSize:"clamp(24px,4vw,38px)", fontWeight:"bold", color:DARK, margin:"0 0 20px", lineHeight:1.15 }}>
+          Checklist de 5 puntos para una visita de tienda efectiva
+        </h1>
+        <div style={{ display:"flex", alignItems:"center", gap:12, fontSize:13, color:"#aaa" }}>
+          <span>Juan Carlos Hernández</span>
+          <span>·</span>
+          <time>Junio 2026</time>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div style={{ fontSize:16, lineHeight:1.8, color:"#2d2d2d" }}>
+
+        <h2 style={{ fontSize:20, fontWeight:"bold", color:DARK, margin:"0 0 16px" }}>¿Visitas tiendas o solo las recorres?</h2>
+
+        <p style={{ marginBottom:20 }}>
+          Hay una diferencia enorme entre caminar una tienda y visitarla de verdad.
+          Uno de los errores más comunes que veo en gerentes de zona es llegar a una tienda
+          con buena intención pero sin sistema: revisan lo que se ve, comentan lo que les
+          llama la atención, y se van sin un diagnóstico real.
+        </p>
+
+        <p style={{ marginBottom:20 }}>
+          Marcus Aurelius, emperador romano y filósofo estoico del siglo II, escribió en
+          sus <em>Meditaciones</em>:{" "}
+          <span style={{ fontStyle:"italic", color:"#444" }}>"La excelencia no es un acto, es un hábito."</span>{" "}
+          Gobernó uno de los imperios más grandes de la historia aplicando rutinas deliberadas
+          en cada decisión. Lo mismo aplica en el piso de venta: la excelencia operativa no
+          viene de visitas inspiradas, viene de visitas sistemáticas.
+        </p>
+
+        <p style={{ marginBottom:32 }}>
+          Después de 29 años gestionando operaciones multiunidad en cadenas como OXXO,
+          Walmart y Soriana, desarrollé un checklist de 5 puntos que aplico en cada visita,
+          sin excepción. No importa si es una tienda nueva o una que conozco de memoria —
+          la disciplina de revisar siempre lo mismo es lo que genera comparabilidad, y la
+          comparabilidad genera decisiones.
+        </p>
+
+        <hr style={{ border:"none", borderTop:`1px solid #e8e8e8`, margin:"0 0 32px" }} />
+
+        <h2 style={{ fontSize:20, fontWeight:"bold", color:DARK, margin:"0 0 24px" }}>Los 5 puntos de una visita efectiva</h2>
+
+        {/* Checklist items */}
+        <div style={{ display:"flex", flexDirection:"column", gap:28, marginBottom:40 }}>
+          {checklistItems.map(item => (
+            <div key={item.n} style={{ display:"flex", gap:20, alignItems:"flex-start" }}>
+              <div style={{
+                flexShrink:0, width:40, height:40, borderRadius:"50%",
+                background:DARK, color:GOLD,
+                display:"flex", alignItems:"center", justifyContent:"center",
+                fontSize:12, fontWeight:"bold", fontFamily:"monospace", marginTop:3,
+              }}>
+                {item.n}
+              </div>
+              <div>
+                <h3 style={{ fontSize:16, fontWeight:"bold", color:DARK, margin:"0 0 8px" }}>{item.title}</h3>
+                <p style={{ fontSize:15, color:"#555", margin:0, lineHeight:1.65 }}>{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <hr style={{ border:"none", borderTop:`1px solid #e8e8e8`, margin:"0 0 32px" }} />
+
+        <h2 style={{ fontSize:20, fontWeight:"bold", color:DARK, margin:"0 0 16px" }}>Por qué funciona este sistema</h2>
+
+        <p style={{ marginBottom:20 }}>
+          El valor del checklist no está en los 5 puntos por separado — está en aplicarlos
+          siempre en el mismo orden, en cada tienda, en cada visita. Esto te da algo que
+          vale más que la intuición: comparabilidad.
+        </p>
+
+        <p style={{ marginBottom:20 }}>
+          Cuando visitas 10 tiendas con el mismo lente, empiezas a ver patrones que de otra
+          forma se pierden. ¿Por qué la tienda 3 siempre falla en ejecución comercial pero
+          lidera en NPS? ¿Por qué la tienda 7 tiene los mejores indicadores del día pero la
+          mayor rotación de personal? Esas preguntas solo se responden cuando tienes datos
+          comparables, no impresiones aisladas.
+        </p>
+
+        <p style={{ marginBottom:8 }}>
+          Un proverbio japonés dice:{" "}
+          <span style={{ fontStyle:"italic", color:"#444" }}>
+            "Visión sin acción es un sueño. Acción sin visión es una pesadilla."
+          </span>{" "}
+          Una visita sin sistema es acción sin visión — mucho movimiento, poco resultado.
+        </p>
+      </div>
+
+      {/* Download Banner */}
+      <DownloadBanner
+        headline="Descarga el checklist completo — gratis"
+        description="El formato listo para imprimir o usar en tu próxima visita de tienda. Sin registro, sin correo."
+        ctaLabel="Descargar checklist"
+        ctaHref="https://share.google/DUojrNZjHLMvLG6AA"
+      />
+
+      {/* Author bio */}
+      <div style={{ display:"flex", alignItems:"center", gap:16, paddingTop:32, borderTop:`1px solid #e8e8e8`, marginTop:8 }}>
+        <div style={{
+          flexShrink:0, width:48, height:48, borderRadius:"50%",
+          background:DARK, color:GOLD, display:"flex", alignItems:"center",
+          justifyContent:"center", fontSize:12, fontWeight:"bold", fontFamily:"monospace",
+        }}>JC</div>
+        <div>
+          <div style={{ fontSize:14, fontWeight:"bold", color:DARK, marginBottom:4 }}>Juan Carlos Hernández</div>
+          <div style={{ fontSize:13, color:MGRAY, lineHeight:1.5 }}>
+            Autor de tres libros de liderazgo, conferencista y mentor con 29 años de experiencia en operaciones multiunidad.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── MAIN APP ─────────────────────────────────────────────────
 export default function App() {
   const [section, setSection] = useState("inicio");
+  const [blogPost, setBlogPost] = useState(null); // null = índice, slug = post
   const [testStep, setTestStep] = useState("intro");
   const [testIdx, setTestIdx] = useState(0);
   const [testScore, setTestScore] = useState(0);
@@ -107,13 +352,74 @@ export default function App() {
 
   const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({behavior:"smooth"}); };
 
-  const NavBtn = ({id, label}) => (
-    <button onClick={() => scrollTo(id)}
-      style={{background:"none",border:"none",cursor:"pointer",fontSize:13,color:DARK,fontFamily:"Georgia",letterSpacing:0.5,padding:"4px 0",borderBottom:section===id?`2px solid ${GOLD}`:"2px solid transparent",transition:"all 0.2s"}}>
+  // Blog navigation
+  function goToBlog() {
+    setBlogPost(null);
+    setSection("blog");
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function goToPost(slug) {
+    setBlogPost(slug);
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  function goBackToBlog() {
+    setBlogPost(null);
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  const NavBtn = ({id, label, isBlog}) => (
+    <button
+      onClick={() => isBlog ? goToBlog() : scrollTo(id)}
+      style={{
+        background:"none", border:"none", cursor:"pointer", fontSize:13,
+        color:DARK, fontFamily:"Georgia", letterSpacing:0.5, padding:"4px 0",
+        borderBottom:section===id?`2px solid ${GOLD}`:"2px solid transparent",
+        transition:"all 0.2s",
+      }}>
       {label}
     </button>
   );
 
+  // ── BLOG VIEW ──
+  if (section === "blog") {
+    return (
+      <div style={{ background:WHITE, color:DARK, fontFamily:"Georgia,serif", minHeight:"100vh", overflowX:"hidden" }}>
+        {/* NAV */}
+        <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, background:"rgba(255,255,255,0.97)", backdropFilter:"blur(10px)", borderBottom:`1px solid rgba(0,0,0,0.08)`, height:64, display:"flex", alignItems:"center", padding:"0 40px", gap:0 }}>
+          <div style={{ display:"flex", alignItems:"center", gap:10, marginRight:48 }}>
+            <div style={{ width:28, height:28, border:`2px solid ${GOLD}`, borderRadius:"50%", display:"flex", alignItems:"center", justifyContent:"center" }}>
+              <span style={{ color:GOLD, fontSize:10, fontFamily:"monospace", fontWeight:"bold" }}>✦</span>
+            </div>
+            <div>
+              <div style={{ fontWeight:"bold", fontSize:13, letterSpacing:1, lineHeight:1.2 }}>JUAN CARLOS</div>
+              <div style={{ fontWeight:"bold", fontSize:13, letterSpacing:1, lineHeight:1.2 }}>HERNÁNDEZ</div>
+            </div>
+          </div>
+          <div style={{ display:"flex", gap:28, flex:1 }}>
+            {[["inicio","INICIO"],["sobre","SOBRE MÍ"],["libros","LIBROS"],["podcast","PODCAST"],["conf","CONFERENCIAS"],["talleres","TALLERES"],["mentor","MENTOR IA"],["contact","CONTACTO"]].map(([id,label]) => (
+              <button key={id} onClick={() => { setSection("inicio"); setTimeout(() => scrollTo(id), 50); }}
+                style={{ background:"none", border:"none", cursor:"pointer", fontSize:13, color:DARK, fontFamily:"Georgia", letterSpacing:0.5, padding:"4px 0", borderBottom:"2px solid transparent" }}>
+                {label}
+              </button>
+            ))}
+            <button onClick={() => {}}
+              style={{ background:"none", border:"none", cursor:"pointer", fontSize:13, color:DARK, fontFamily:"Georgia", letterSpacing:0.5, padding:"4px 0", borderBottom:`2px solid ${GOLD}` }}>
+              BLOG
+            </button>
+          </div>
+        </nav>
+        {/* Blog content */}
+        <div style={{ paddingTop:64 }}>
+          {blogPost === "checklist-5-puntos"
+            ? <PostChecklist onBack={goBackToBlog} />
+            : <BlogIndex onSelectPost={goToPost} />
+          }
+        </div>
+      </div>
+    );
+  }
+
+  // ── MAIN SITE VIEW ──
   return (
     <div style={{background:WHITE,color:DARK,fontFamily:"Georgia,serif",minHeight:"100vh",overflowX:"hidden"}}>
 
@@ -132,6 +438,12 @@ export default function App() {
           {[["inicio","INICIO"],["sobre","SOBRE MÍ"],["libros","LIBROS"],["podcast","PODCAST"],["conf","CONFERENCIAS"],["talleres","TALLERES"],["mentor","MENTOR IA"],["contact","CONTACTO"]].map(([id,label]) => (
             <NavBtn key={id} id={id} label={label} />
           ))}
+          <button onClick={goToBlog}
+            style={{background:"none",border:"none",cursor:"pointer",fontSize:13,color:DARK,fontFamily:"Georgia",letterSpacing:0.5,padding:"4px 0",borderBottom:"2px solid transparent",transition:"all 0.2s"}}
+            onMouseEnter={e => e.currentTarget.style.borderBottomColor=GOLD}
+            onMouseLeave={e => e.currentTarget.style.borderBottomColor="transparent"}>
+            BLOG
+          </button>
         </div>
       </nav>
 
@@ -166,15 +478,10 @@ export default function App() {
             </button>
           </div>
         </div>
-
-        {/* FOTO HERO */}
         <div style={{position:"relative",background:`linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%)`,display:"flex",alignItems:"flex-end",justifyContent:"center",overflow:"hidden"}}>
-          <img
-            src="./IMAGENHEROPORTADADELSITIO.jpeg"
-            alt="Juan Carlos Hernández"
-            style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",opacity:0.85}}
-          />
-          <div style={{position:"absolute",top:0,left:0,right:0,bottom:0,background:"linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%)"}} />
+          <img src="./IMAGENHEROPORTADADELSITIO.jpeg" alt="Juan Carlos Hernández"
+            style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top",opacity:0.85}}/>
+          <div style={{position:"absolute",top:0,left:0,right:0,bottom:0,background:"linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%)"}}/>
           <div style={{position:"absolute",top:40,right:40,textAlign:"right",zIndex:2}}>
             <div style={{fontFamily:"cursive",fontSize:28,color:GOLD,lineHeight:1.2}}>Juan Carlos<br/>Hernández</div>
             <div style={{fontSize:12,color:"rgba(255,255,255,0.7)",marginTop:8,letterSpacing:1}}>Autor | Conferencista<br/>Mentor | Empresario</div>
@@ -191,11 +498,8 @@ export default function App() {
       <section id="sobre" style={{padding:"80px 40px",background:DARK,overflow:"hidden"}}>
         <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"center"}}>
           <div style={{position:"relative"}}>
-            <img
-              src="./SOBREMI.jpeg"
-              alt="Juan Carlos Hernández"
-              style={{width:"100%",borderRadius:12,objectFit:"cover",height:520,display:"block"}}
-            />
+            <img src="./SOBREMI.jpeg" alt="Juan Carlos Hernández"
+              style={{width:"100%",borderRadius:12,objectFit:"cover",height:520,display:"block"}}/>
             <div style={{position:"absolute",bottom:-20,right:-20,background:GOLD,borderRadius:8,padding:"16px 24px",boxShadow:"0 8px 32px rgba(0,0,0,0.3)"}}>
               <div style={{fontSize:28,fontWeight:"bold",color:WHITE,lineHeight:1}}>29</div>
               <div style={{fontSize:11,color:"rgba(255,255,255,0.8)",letterSpacing:1}}>AÑOS DE<br/>EXPERIENCIA</div>
@@ -203,9 +507,7 @@ export default function App() {
           </div>
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:16}}>SOBRE MÍ</div>
-            <h2 style={{fontSize:36,fontWeight:"bold",color:WHITE,marginBottom:24,lineHeight:1.2}}>
-              De las tiendas a los escenarios.
-            </h2>
+            <h2 style={{fontSize:36,fontWeight:"bold",color:WHITE,marginBottom:24,lineHeight:1.2}}>De las tiendas a los escenarios.</h2>
             <p style={{color:"rgba(255,255,255,0.7)",fontSize:16,lineHeight:1.8,marginBottom:20}}>
               Con 29 años liderando operaciones en OXXO, Walmart, Soriana y Six Flags, aprendí que el verdadero liderazgo no se trata de números — se trata de las personas detrás de ellos.
             </p>
@@ -245,7 +547,6 @@ export default function App() {
               </button>
             </div>
           )}
-
           {testStep === "pregunta" && (
             <div style={{maxWidth:640,margin:"0 auto"}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:12}}>
@@ -268,7 +569,6 @@ export default function App() {
               </div>
             </div>
           )}
-
           {testStep === "result" && testResult && (
             <div style={{maxWidth:640,margin:"0 auto",textAlign:"center"}}>
               <div style={{background:WHITE,borderRadius:16,padding:40,border:`2px solid ${testResult.color}`}}>
@@ -347,7 +647,7 @@ export default function App() {
               <div key={i} style={{background:b.bg,borderRadius:12,overflow:"hidden",cursor:"pointer",transition:"all 0.2s",boxShadow:"0 4px 16px rgba(0,0,0,0.1)"}}
                 onMouseEnter={e => {e.currentTarget.style.transform="translateY(-6px)";e.currentTarget.style.boxShadow="0 12px 32px rgba(0,0,0,0.2)";}}
                 onMouseLeave={e => {e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 4px 16px rgba(0,0,0,0.1)";}}>
-                <img src={b.img} alt={b.title} style={{width:"100%",height:200,objectFit:"cover",display:"block"}} />
+                <img src={b.img} alt={b.title} style={{width:"100%",height:200,objectFit:"cover",display:"block"}}/>
                 <div style={{padding:24}}>
                   <div style={{fontSize:11,color:b.accent,letterSpacing:2,fontFamily:"monospace",marginBottom:8}}>LIBRO {i+1}</div>
                   <h3 style={{fontSize:14,color:i===0?DARK:WHITE,lineHeight:1.4,margin:"0 0 8px",fontWeight:"bold"}}>{b.title}</h3>
@@ -359,7 +659,6 @@ export default function App() {
                 </div>
               </div>
             ))}
-            {/* Cita */}
             <div style={{padding:28,borderLeft:`4px solid ${GOLD}`}}>
               <div style={{fontSize:32,color:GOLD,marginBottom:12}}>"</div>
               <p style={{fontSize:16,lineHeight:1.7,color:DARK,fontStyle:"italic",margin:"0 0 16px"}}>
@@ -378,12 +677,10 @@ export default function App() {
             <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:12}}>PARA EMPRESAS</div>
             <h2 style={{fontSize:32,fontWeight:"bold",color:WHITE,margin:0}}>CONFERENCIAS DE IMPACTO</h2>
           </div>
-
-          {/* Foto conferencista */}
           <div style={{position:"relative",borderRadius:16,overflow:"hidden",marginBottom:48,height:360}}>
             <img src="./SECCIONCONFERENCIA1.jpeg" alt="Conferencia Juan Carlos Hernández"
-              style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 30%"}} />
-            <div style={{position:"absolute",inset:0,background:"linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%)"}} />
+              style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 30%"}}/>
+            <div style={{position:"absolute",inset:0,background:"linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 100%)"}}/>
             <div style={{position:"absolute",top:"50%",left:48,transform:"translateY(-50%)",maxWidth:400}}>
               <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:12}}>LIDERAZGO QUE GENERA RESULTADOS</div>
               <p style={{color:WHITE,fontSize:20,lineHeight:1.6,fontStyle:"italic",margin:"0 0 20px"}}>
@@ -392,7 +689,6 @@ export default function App() {
               <div style={{color:"rgba(255,255,255,0.6)",fontSize:13}}>— Juan Carlos Hernández</div>
             </div>
           </div>
-
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))",gap:16,marginBottom:40}}>
             {CONFERENCIAS.map((c,i) => (
               <div key={i} style={{background:"rgba(255,255,255,0.05)",borderRadius:10,padding:"20px 24px",display:"flex",alignItems:"center",gap:14,cursor:"pointer",border:`1px solid rgba(255,255,255,0.08)`,transition:"all 0.2s"}}
@@ -436,17 +732,14 @@ export default function App() {
             </button>
           </div>
           <div style={{position:"relative",borderRadius:16,overflow:"hidden",height:480}}>
-            <img src="./TALLERES.jpeg" alt="Taller de liderazgo"
-              style={{width:"100%",height:"100%",objectFit:"cover"}} />
+            <img src="./TALLERES.jpeg" alt="Taller de liderazgo" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
           </div>
         </div>
       </section>
 
-      {/* PARA EMPRESAS + COMUNIDAD + RECURSOS */}
+      {/* COMUNIDAD + PARA EMPRESAS + RECURSOS */}
       <section style={{padding:"80px 40px",background:WHITE}}>
         <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:48}}>
-
-          {/* COMUNIDAD */}
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>COMUNIDAD</div>
             {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","https://www.linkedin.com/in/juan-carlos-hernandez-hidalgo-02756336a"],["🎙","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
@@ -461,8 +754,6 @@ export default function App() {
               </a>
             ))}
           </div>
-
-          {/* PARA EMPRESAS */}
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>PARA EMPRESAS</div>
             {[["🎤","Conferencias de Impacto","Charlas que transforman equipos."],["👥","Talleres y Workshops","Formación práctica y vivencial."],["🏫","Escuelas de Liderazgo","Programas a la medida."],["🌱","Sistema Verde y Limpio","Operaciones que generan resultados."]].map(([e,n,d],i) => (
@@ -475,15 +766,15 @@ export default function App() {
               </div>
             ))}
           </div>
-
-          {/* RECURSOS EXTRA */}
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>RECURSOS EXTRA</div>
-            {[["📝","Blog","Artículos y herramientas gratuitas."],["✉️","Newsletter","Liderazgo sin filtro en tu correo."],["💬","Contacto","Hablemos de cómo puedo ayudarte."],["📅","Eventos","Próximas conferencias y talleres."]].map(([e,n,d],i) => (
-              <div key={i} style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer"}}>
+            {[["📝","Blog","Artículos y herramientas gratuitas.",true],["✉️","Newsletter","Liderazgo sin filtro en tu correo.",false],["💬","Contacto","Hablemos de cómo puedo ayudarte.",false],["📅","Eventos","Próximas conferencias y talleres.",false]].map(([e,n,d,isBlog],i) => (
+              <div key={i}
+                style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer"}}
+                onClick={isBlog ? goToBlog : undefined}>
                 <span style={{fontSize:20,flexShrink:0}}>{e}</span>
                 <div>
-                  <div style={{fontSize:13,fontWeight:"bold",color:DARK}}>{n}</div>
+                  <div style={{fontSize:13,fontWeight:"bold",color:isBlog?GOLD:DARK,textDecoration:isBlog?"underline":"none"}}>{n}</div>
                   <div style={{fontSize:12,color:MGRAY}}>{d}</div>
                 </div>
               </div>
