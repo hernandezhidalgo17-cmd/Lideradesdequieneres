@@ -754,19 +754,19 @@ export default function App() {
           </p>
           <div style={{borderRadius:16,overflow:"hidden",boxShadow:"0 8px 32px rgba(0,0,0,0.12)"}}>
             <iframe
-              src="https://open.spotify.com/embed/episode/3cUmvLN9BRdog3ZSDSL9ld?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/show/033BeAl7ooUHcP2OwNMOTp?utm_source=generator&theme=0"
               width="100%"
-              height="232"
+              height="352"
               frameBorder="0"
               allowFullScreen=""
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
-              title="El Café de las 7am - Episodio 1"
+              title="El Café de las 7am - Círculo de lectura para líderes"
             />
           </div>
-          <a href="https://open.spotify.com/episode/3cUmvLN9BRdog3ZSDSL9ld" target="_blank" rel="noopener noreferrer"
+          <a href="https://open.spotify.com/show/033BeAl7ooUHcP2OwNMOTp" target="_blank" rel="noopener noreferrer"
             style={{display:"inline-block",marginTop:24,background:GOLD,color:WHITE,border:"none",padding:"14px 32px",borderRadius:4,fontSize:14,fontFamily:"Georgia",fontWeight:"bold",letterSpacing:1,textDecoration:"none"}}>
-            ESCUCHAR EN SPOTIFY →
+            VER TODOS LOS EPISODIOS →
           </a>
         </div>
       </section>
