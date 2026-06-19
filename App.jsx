@@ -369,7 +369,11 @@ export default function App() {
 
   const NavBtn = ({id, label, isBlog}) => (
     <button
-      onClick={() => isBlog ? goToBlog() : scrollTo(id)}
+      onClick={() => {
+        if (isBlog) { goToBlog(); }
+        else if (id === "podcast") { window.open("https://open.spotify.com/episode/3cUmvLN9BRdog3ZSDSL9ld", "_blank"); }
+        else { scrollTo(id); }
+      }}
       style={{
         background:"none", border:"none", cursor:"pointer", fontSize:13,
         color:DARK, fontFamily:"Georgia", letterSpacing:0.5, padding:"4px 0",
@@ -397,7 +401,10 @@ export default function App() {
           </div>
           <div style={{ display:"flex", gap:28, flex:1 }}>
             {[["inicio","INICIO"],["sobre","SOBRE MÍ"],["libros","LIBROS"],["podcast","PODCAST"],["conf","CONFERENCIAS"],["talleres","TALLERES"],["mentor","MENTOR IA"],["contact","CONTACTO"]].map(([id,label]) => (
-              <button key={id} onClick={() => { setSection("inicio"); setTimeout(() => scrollTo(id), 50); }}
+              <button key={id} onClick={() => {
+                  if (id === "podcast") { window.open("https://open.spotify.com/episode/3cUmvLN9BRdog3ZSDSL9ld", "_blank"); }
+                  else { setSection("inicio"); setTimeout(() => scrollTo(id), 50); }
+                }}
                 style={{ background:"none", border:"none", cursor:"pointer", fontSize:13, color:DARK, fontFamily:"Georgia", letterSpacing:0.5, padding:"4px 0", borderBottom:"2px solid transparent" }}>
                 {label}
               </button>
@@ -737,12 +744,39 @@ export default function App() {
         </div>
       </section>
 
+      {/* PODCAST */}
+      <section id="podcast" style={{padding:"80px 40px",background:WHITE}}>
+        <div style={{maxWidth:720,margin:"0 auto",textAlign:"center"}}>
+          <div style={{fontSize:11,color:GOLD,letterSpacing:4,fontFamily:"monospace",marginBottom:12}}>PODCAST</div>
+          <h2 style={{fontSize:32,fontWeight:"bold",marginBottom:16}}>El Café de las 7am</h2>
+          <p style={{color:MGRAY,fontSize:16,lineHeight:1.7,marginBottom:40,maxWidth:560,margin:"0 auto 40px"}}>
+            Círculo de lectura para líderes. Cada semana, un libro, un café y una conversación honesta sobre liderazgo.
+          </p>
+          <div style={{borderRadius:16,overflow:"hidden",boxShadow:"0 8px 32px rgba(0,0,0,0.12)"}}>
+            <iframe
+              src="https://open.spotify.com/embed/episode/3cUmvLN9BRdog3ZSDSL9ld?utm_source=generator&theme=0"
+              width="100%"
+              height="232"
+              frameBorder="0"
+              allowFullScreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              title="El Café de las 7am - Episodio 1"
+            />
+          </div>
+          <a href="https://open.spotify.com/episode/3cUmvLN9BRdog3ZSDSL9ld" target="_blank" rel="noopener noreferrer"
+            style={{display:"inline-block",marginTop:24,background:GOLD,color:WHITE,border:"none",padding:"14px 32px",borderRadius:4,fontSize:14,fontFamily:"Georgia",fontWeight:"bold",letterSpacing:1,textDecoration:"none"}}>
+            ESCUCHAR EN SPOTIFY →
+          </a>
+        </div>
+      </section>
+
       {/* COMUNIDAD + PARA EMPRESAS + RECURSOS */}
       <section style={{padding:"80px 40px",background:WHITE}}>
         <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:48}}>
           <div>
             <div style={{fontSize:11,color:GOLD,letterSpacing:3,fontFamily:"monospace",marginBottom:20}}>COMUNIDAD</div>
-            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","https://www.linkedin.com/in/juan-carlos-hernandez-hidalgo-02756336a"],["🎙","Spotify","Podcast con historias reales.","#"]].map(([e,n,d,url],i) => (
+            {[["▶️","YouTube","Videos para liderar mejor cada día.","https://www.youtube.com/@juancarloshernandezh1183"],["🎵","TikTok","Ideas rápidas que generan impacto.","https://www.tiktok.com/@juan.carlos.herna49"],["💼","LinkedIn","Artículos, reflexiones y herramientas.","https://www.linkedin.com/in/juan-carlos-hernandez-hidalgo-02756336a"],["🎙","Spotify","Podcast con historias reales.","https://open.spotify.com/episode/3cUmvLN9BRdog3ZSDSL9ld"]].map(([e,n,d,url],i) => (
               <a key={i} href={url} target="_blank" rel="noopener noreferrer" style={{display:"flex",gap:14,marginBottom:20,cursor:"pointer",textDecoration:"none"}}
                 onMouseEnter={ev => ev.currentTarget.style.opacity="0.7"}
                 onMouseLeave={ev => ev.currentTarget.style.opacity="1"}>
